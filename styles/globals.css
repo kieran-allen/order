@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-r from-slate-800 to-slate-900 text-white my-8 font-serif;
+  }
+}
+
+@layer components {
+  .card-container {
+    @apply flex flex-col gap-4 max-w-[768px] mx-auto p-4;
+  }
+
+  .card {
+    @apply bg-white text-white text-2xl rounded p-4 font-bold shadow-lg;
+    @apply bg-gradient-to-r from-purple-800 to-fuchsia-900;
+    @apply md:p-8;
+  }
+
+  .card:hover {
+    @apply outline;
+  }
+
+  .card:focus {
+    @apply outline;
+  }
+
+  .name-input-form {
+    @apply max-w-[768px] mx-auto flex flex-col gap-4;
+  }
+
+  .name-input {
+    @apply outline px-8 py-4 rounded text-black w-[100%] shadow-lg border;
+    @apply text-2xl;
+  }
+
+  .name-input-label {
+    @apply text-2xl;
+  }
+
+  .name-input-button {
+    @apply font-bold bg-gradient-to-r from-purple-800 to-fuchsia-900 rounded shadow-lg px-8 py-4;
+  }
+
+  .name-input-button:hover, .name-input-button:focus {
+    @apply outline;
+  }
+}
