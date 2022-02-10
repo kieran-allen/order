@@ -29,6 +29,9 @@ const Home: NextPage = () => {
   if (Array.isArray(names) && names.length) {
     return (
       <div className="card-container">
+        <button onClick={() => pushRoute('/')} className="text-white text-sm underline self-start">
+          &#8592; Go back
+        </button>
         <header>
           <h1 className="text-4xl">Order:</h1>
         </header>

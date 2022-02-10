@@ -6,19 +6,23 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-r from-slate-800 to-slate-900 text-white my-8 font-serif;
+    @apply bg-gradient-to-r from-slate-800 to-slate-900 text-white my-8 font-serif mx-4;
   }
 }
 
 @layer components {
   .card-container {
-    @apply flex flex-col gap-4 max-w-[768px] mx-auto p-4;
+    @apply flex flex-col gap-4 max-w-[768px] mx-auto;
   }
+
 
   .card {
     @apply bg-white text-white text-2xl rounded p-4 font-bold shadow-lg;
     @apply bg-gradient-to-r from-purple-800 to-fuchsia-900;
-    @apply md:p-8;
+  }
+
+  .card:first-of-type {
+    @apply bg-gradient-to-r from-emerald-800 to-emerald-700;
   }
 
   .card:hover {
@@ -34,8 +38,8 @@
   }
 
   .name-input {
-    @apply outline px-8 py-4 rounded text-black w-[100%] shadow-lg border;
-    @apply text-2xl;
+    @apply outline px-4 py-4 rounded text-black w-[100%] shadow-lg border;
+    @apply text-lg;
   }
 
   .name-input-label {
