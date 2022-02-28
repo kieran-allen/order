@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       .split(",")
       .filter((n) => !!n)
       .reduce(
-        (prev, curr, i) => (!i ? `?r=${round}&n=${curr}` : `${prev}&n=${curr}`),
+        (prev, curr, i) => (!i ? `?r=${getRound(round)}&n=${curr}` : `${prev}&n=${curr}`),
         ""
       );
     pushRoute(query);
