@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { generateNewQueryParams } from "../utils/generateNewQueryParams";
+import { getRound } from "../utils/getRound";
 
 import { sortNames } from "../utils/sortNames";
 
@@ -10,7 +12,7 @@ type FormProps = {
 
 const Home: NextPage = () => {
   const {
-    query: { n: names },
+    query: { n: names, r: round = "0" },
     push: pushRoute,
   } = useRouter();
 
@@ -21,7 +23,10 @@ const Home: NextPage = () => {
       .trim()
       .split(",")
       .filter((n) => !!n)
-      .reduce((prev, curr, i) => (!i ? `?n=${curr}` : `${prev}&n=${curr}`), "");
+      .reduce(
+        (prev, curr, i) => (!i ? `?r=${round}&n=${curr}` : `${prev}&n=${curr}`),
+        ""
+      );
     pushRoute(query);
   });
 
@@ -29,14 +34,35 @@ const Home: NextPage = () => {
   if (Array.isArray(names) && names.length) {
     return (
       <div className="card-container">
-        <button onClick={() => pushRoute('/')} className="text-white text-sm underline self-start">
+        <button
+          onClick={() => pushRoute("/")}
+          className="text-white text-sm underline self-start"
+        >
           &#8592; Go back
         </button>
+        <div className="flex place-content-between">
+          <button
+            onClick={() =>
+              pushRoute(generateNewQueryParams(names, getRound(round) + 1))
+            }
+            className="text-white text-sm underline self-start"
+          >
+            🎲 Reorder
+          </button>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/kieran-allen/order"
+            className="text-white text-sm underline self-start"
+          >
+            GitHub
+          </a>
+        </div>
         <header>
           <h1 className="text-4xl">Order:</h1>
         </header>
-        {sortNames(names).map((n, i) => (
-          <div className="card" key={i}>
+        {sortNames(names, getRound(round)).map((n, i) => (
+          <div className="card" tabIndex={0} key={i}>
             {i + 1}. {n}
           </div>
         ))}

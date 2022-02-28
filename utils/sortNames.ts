@@ -1,8 +1,8 @@
 import { calculateSeed } from "./calculateSeed";
 
-export function sortNames(names: string[]): string[] {
+export function sortNames(names: string[], round: number): string[] {
   return names
-    .map((n, i) => calculateSeed(n, i))
+    .map((n) => calculateSeed(n, round))
     .sort((a, b) => a.seed - b.seed)
     .map((n) => n.name);
 }
