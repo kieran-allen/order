@@ -13,7 +13,7 @@ export function calculateSeed(
   return {
     name,
     seed: seed(
-      `${date.getDay()}${date.getMonth()}${date.getFullYear()}${name}${round}`
+      `${date.getUTCDate()}${date.getUTCMonth()}${date.getUTCFullYear()}${name}${round}`
     )(),
   };
 }
