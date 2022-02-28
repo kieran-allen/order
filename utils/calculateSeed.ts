@@ -5,12 +5,12 @@ export type CalculateSeedReturn = {
   seed: number;
 };
 
-export function calculateSeed(name: string): { name: string; seed: number } {
+export function calculateSeed(name: string, index: number): { name: string; seed: number } {
   const date = new Date();
   return {
     name,
     seed: seed(
-      `${date.getDay()}${date.getMonth()}${date.getFullYear()}${name}`
+      `${date.getDay()}${date.getMonth()}${date.getFullYear()}${name}${index}`
     )(),
   };
 }
